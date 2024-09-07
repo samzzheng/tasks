@@ -20,6 +20,11 @@ function App(): React.JSX.Element {
                 <li>Thing 2</li>
                 <li>Thing 3</li>
             </ul>
+            <ol>
+                <li>Thing 1</li>
+                <li>Thing 2</li>
+                <li>Thing 3</li>
+            </ol>
 
             <Button
                 onClick={() => {
@@ -28,6 +33,7 @@ function App(): React.JSX.Element {
             >
                 Log Hello World
             </Button>
+
             <div style={{ background: "red", width: 100, height: 200 }}>
                 <Container>
                     <Row>
