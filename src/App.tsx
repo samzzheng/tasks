@@ -9,7 +9,6 @@ function App(): React.JSX.Element {
                 UD CISC275 with React Hooks and TypeScript
             </header>
             <h1>Samuel Zheng</h1>
-            <header>This is my header</header>
             <img
                 src="images/kekwait.jpg"
                 alt="Zoomed in picture of a mans face"
