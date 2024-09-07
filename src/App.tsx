@@ -15,11 +15,6 @@ function App(): React.JSX.Element {
                 alt="Zoomed in picture of a mans face"
             />
 
-            <ul>
-                <li>Thing 1</li>
-                <li>Thing 2</li>
-                <li>Thing 3</li>
-            </ul>
             <ol>
                 <li>Thing 1</li>
                 <li>Thing 2</li>
