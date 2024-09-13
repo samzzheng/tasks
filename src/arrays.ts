@@ -105,6 +105,10 @@ export function allRGB(colors: string[]): boolean {
  * And the array [] would become "0=0".
  */
 export function makeMath(addends: number[]): string {
+    if (addends.length === 0) {
+        return "0=0";
+    }
+
     return "";
 }
 
@@ -118,5 +122,6 @@ export function makeMath(addends: number[]): string {
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
 export function injectPositive(values: number[]): number[] {
-    return [];
+    values = [1, 2, 3];
+    return values;
 }
