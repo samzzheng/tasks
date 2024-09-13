@@ -19,8 +19,6 @@ export function bookEndList(numbers: number[]): number[] {
         let firstAndLast: number[] = [numbers[0], numbers[numbers.length - 1]];
         return firstAndLast;
     }
-
-    return numbers;
 }
 
 /**
