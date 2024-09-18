@@ -46,7 +46,7 @@ export function isCorrect(question: Question, answer: string): boolean {
 export function isValid(question: Question, answer: string): boolean {
     if (question.type === "short_answer_question") {
         return true;
-    } else if (question.type === "multiple_choice_question") {
+    } else {
         if (question.options.includes(answer)) {
             return true;
         }
@@ -107,7 +107,7 @@ export function renameQuestion(question: Question, newName: string): Question {
  * published; if it was published, now it should be not published.
  */
 export function publishQuestion(question: Question): Question {
-    if (question.published === false) {
+    if (!question.published) {
         let newQuestion = { ...question, published: true };
         return newQuestion;
     }
