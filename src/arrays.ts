@@ -82,7 +82,6 @@ export function countShortWords(words: string[]): number {
     );
     return countingShort.length;
 }
-
 /**
  * Consumes an array of colors (e.g., 'red', 'purple') and returns true if ALL
  * the colors are either 'red', 'blue', or 'green'. If an empty list is given,
@@ -96,7 +95,6 @@ export function allRGB(colors: string[]): boolean {
 
     return colors.every((color) => validColors.includes(color));
 }
-
 /**
  * Consumes an array of numbers, and produces a string representation of the
  * numbers being added together along with their actual sum.
@@ -109,7 +107,10 @@ export function makeMath(addends: number[]): string {
         return "0=0";
     }
 
-    return "";
+    const sum = addends.reduce((acc, num) => acc + num, 0);
+    const additionString = addends.join("+");
+
+    return `${sum}=${additionString}`;
 }
 
 /**
@@ -122,6 +123,23 @@ export function makeMath(addends: number[]): string {
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
 export function injectPositive(values: number[]): number[] {
-    values = [1, 2, 3];
-    return values;
+    const firstNegativeIndex = values.findIndex((num) => num < 0);
+
+    const sum =
+        firstNegativeIndex !== -1 ?
+            values
+                .slice(0, firstNegativeIndex)
+                .reduce((acc, num) => acc + num, 0)
+        :   values.reduce((acc, num) => acc + num, 0);
+
+    if (firstNegativeIndex !== -1) {
+        return [
+            ...values.slice(0, firstNegativeIndex + 1),
+            sum,
+            ...values.slice(firstNegativeIndex + 1),
+        ];
+    }
+
+    // If there is no negative number, just append the sum
+    return [...values, sum];
 }
