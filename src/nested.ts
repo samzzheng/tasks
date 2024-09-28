@@ -150,11 +150,8 @@ export function addNewQuestion(
     name: string,
     type: QuestionType,
 ): Question[] {
-    // Use the `makeBlankQuestion` function to create a new blank question
-    const newQuestion = makeBlankQuestion(id, name, type);
-
-    // Return a new array with the existing questions and the new blank question appended
-    return [...questions, newQuestion];
+    const newQuestion: Question[] = [];
+    return newQuestion;
 }
 
 /***
@@ -224,7 +221,8 @@ export function editOption(
     targetOptionIndex: number,
     newOption: string,
 ): Question[] {
-    return [];
+    const options: Question[] = [];
+    return options;
 }
 
 /***
@@ -238,5 +236,6 @@ export function duplicateQuestionInArray(
     targetId: number,
     newId: number,
 ): Question[] {
-    return [];
+    const duplicated: Question[] = [];
+    return duplicated;
 }
