@@ -35,6 +35,7 @@ module.exports = {
     },
     ignorePatterns: [".eslintrc.js", "jest.config.js"],
     rules: {
+        //indent: "off",
         // https://stackoverflow.com/questions/57802057/eslint-configuring-no-unused-vars-for-typescript
         // Use typescript's checker for unused vars (critical for Enums)
         "no-unused-vars": "off",
