@@ -144,14 +144,35 @@ export function sameType(questions: Question[]): boolean {
  * except that a blank question has been added onto the end. Reuse the `makeBlankQuestion`
  * you defined in the `objects.ts` file.
  */
+// export function addNewQuestion(
+//     questions: Question[],
+//     id: number,
+//     name: string,
+//     type: QuestionType,
+// ): Question[] {
+//     const newQuestion: Question[] = [];
+//     return newQuestion;
+// }
 export function addNewQuestion(
     questions: Question[],
     id: number,
     name: string,
     type: QuestionType,
 ): Question[] {
-    const newQuestion: Question[] = [];
-    return newQuestion;
+    // Create a new question object based on the parameters
+    const newQuestion: Question = {
+        id,
+        name,
+        body: "", // Assuming body is empty for a new question
+        type,
+        options: type === "multiple_choice_question" ? [] : [], // Initialize options based on the type
+        expected: "", // Assuming expected is empty for a new question
+        points: 1, // Assuming default points is 1
+        published: false, // New questions are not published by default
+    };
+
+    // Return the existing questions along with the new question
+    return [...questions, newQuestion];
 }
 
 /***
@@ -215,14 +236,34 @@ export function changeQuestionTypeById(
  * Remember, if a function starts getting too complicated, think about how a helper function
  * can make it simpler! Break down complicated tasks into little pieces.
  */
+
 export function editOption(
     questions: Question[],
     targetId: number,
     targetOptionIndex: number,
     newOption: string,
 ): Question[] {
-    const options: Question[] = [];
-    return options;
+    return questions.map((question) => {
+        // Check if this question is the one we want to edit
+        if (question.id === targetId) {
+            // Create a new options array based on the condition
+            const updatedOptions = [...question.options];
+            if (targetOptionIndex === -1) {
+                // If index is -1, add the new option to the end
+                updatedOptions.push(newOption);
+            } else {
+                // Replace the option at the specified index if it's valid
+                updatedOptions[targetOptionIndex] = newOption;
+            }
+            // Return a new question with the updated options
+            return {
+                ...question,
+                options: updatedOptions,
+            };
+        }
+        // Return the question unchanged if the id does not match
+        return question;
+    });
 }
 
 /***
@@ -237,5 +278,21 @@ export function duplicateQuestionInArray(
     newId: number,
 ): Question[] {
     const duplicated: Question[] = [];
-    return duplicated;
+
+    for (const question of questions) {
+        duplicated.push(question); // Add the original question to the new array
+
+        // If this question is the one we want to duplicate
+        if (question.id === targetId) {
+            // Create a duplicate question
+            const newQuestion: Question = {
+                ...question,
+                id: newId, // Assign the new ID
+                name: `Copy of ${question.name}`, // Modify the name to indicate it's a copy
+            };
+            duplicated.push(newQuestion); // Add the duplicate immediately after the original
+        }
+    }
+
+    return duplicated; // Return the new array with duplicates
 }
