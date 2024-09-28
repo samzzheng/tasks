@@ -89,13 +89,11 @@ id,name,options,points,published
  * Check the unit tests for more examples!
  */
 export function toCSV(questions: Question[]): string {
-    // Create the header row
     let csv = "id,name,options,points,published\n";
 
-    // Add each question's data as a row in the CSV string
     csv += questions
         .map((question) => {
-            const optionsCount = question.options ? question.options.length : 0;
+            const optionsCount = question.options.length; // No need for a condition here, options is always an array
             return `${question.id},${question.name},${optionsCount},${question.points},${question.published}`;
         })
         .join("\n");
