@@ -1,4 +1,4 @@
-import { Question } from "./interfaces/question.ts";
+import { Question } from "./interfaces/question";
 import {
     getPublishedQuestions,
     getNonEmptyQuestions,
