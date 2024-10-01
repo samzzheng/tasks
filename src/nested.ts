@@ -6,14 +6,7 @@ import { Question, QuestionType } from "./interfaces/question";
  * that are `published`.
  */
 export function getPublishedQuestions(questions: Question[]): Question[] {
-<<<<<<< HEAD
-    const published: Question[] = questions.filter(
-        (question: Question) => question.published,
-    );
-    return published;
-=======
     return [];
->>>>>>> upstream/task-state
 }
 
 /**
@@ -22,18 +15,7 @@ export function getPublishedQuestions(questions: Question[]): Question[] {
  * `expected`, and an empty array for its `options`.
  */
 export function getNonEmptyQuestions(questions: Question[]): Question[] {
-<<<<<<< HEAD
-    const nonEmpty: Question[] = questions.filter(
-        (question: Question) =>
-            question.body !== "" ||
-            question.expected !== "" ||
-            question.options.length > 0,
-    );
-
-    return nonEmpty;
-=======
     return [];
->>>>>>> upstream/task-state
 }
 
 /***
@@ -42,15 +24,9 @@ export function getNonEmptyQuestions(questions: Question[]): Question[] {
  */
 export function findQuestion(
     questions: Question[],
-<<<<<<< HEAD
     id: number,
 ): Question | null {
-    return questions.find((question) => question.id === id) || null;
-=======
-    id: number
-): Question | null {
     return null;
->>>>>>> upstream/task-state
 }
 
 /**
@@ -58,11 +34,7 @@ export function findQuestion(
  * with the given `id`.
  */
 export function removeQuestion(questions: Question[], id: number): Question[] {
-<<<<<<< HEAD
-    return questions.filter((question) => question.id !== id);
-=======
     return [];
->>>>>>> upstream/task-state
 }
 
 /***
@@ -70,35 +42,21 @@ export function removeQuestion(questions: Question[], id: number): Question[] {
  * questions, as an array.
  */
 export function getNames(questions: Question[]): string[] {
-<<<<<<< HEAD
-    return questions.map((question) => question.name);
-=======
     return [];
->>>>>>> upstream/task-state
 }
 
 /***
  * Consumes an array of questions and returns the sum total of all their points added together.
  */
 export function sumPoints(questions: Question[]): number {
-<<<<<<< HEAD
-    return questions.reduce((total, question) => total + question.points, 0);
-=======
     return 0;
->>>>>>> upstream/task-state
 }
 
 /***
  * Consumes an array of questions and returns the sum total of the PUBLISHED questions.
  */
 export function sumPublishedPoints(questions: Question[]): number {
-<<<<<<< HEAD
-    return questions.reduce((total, question) => {
-        return question.published ? total + question.points : total;
-    }, 0);
-=======
     return 0;
->>>>>>> upstream/task-state
 }
 
 /***
@@ -119,20 +77,7 @@ id,name,options,points,published
  * Check the unit tests for more examples!
  */
 export function toCSV(questions: Question[]): string {
-<<<<<<< HEAD
-    let csv = "id,name,options,points,published\n";
-
-    csv += questions
-        .map((question) => {
-            const optionsCount = question.options.length; // No need for a condition here, options is always an array
-            return `${question.id},${question.name},${optionsCount},${question.points},${question.published}`;
-        })
-        .join("\n");
-
-    return csv;
-=======
     return "";
->>>>>>> upstream/task-state
 }
 
 /**
@@ -141,16 +86,7 @@ export function toCSV(questions: Question[]): string {
  * making the `text` an empty string, and using false for both `submitted` and `correct`.
  */
 export function makeAnswers(questions: Question[]): Answer[] {
-<<<<<<< HEAD
-    return questions.map((question) => ({
-        questionId: question.id,
-        text: "",
-        submitted: false,
-        correct: false,
-    }));
-=======
     return [];
->>>>>>> upstream/task-state
 }
 
 /***
@@ -158,14 +94,7 @@ export function makeAnswers(questions: Question[]): Answer[] {
  * each question is now published, regardless of its previous published status.
  */
 export function publishAll(questions: Question[]): Question[] {
-<<<<<<< HEAD
-    return questions.map((question) => ({
-        ...question, // Copy all existing properties
-        published: true, // Override the published property to true
-    }));
-=======
     return [];
->>>>>>> upstream/task-state
 }
 
 /***
@@ -173,14 +102,7 @@ export function publishAll(questions: Question[]): Question[] {
  * are the same type. They can be any type, as long as they are all the SAME type.
  */
 export function sameType(questions: Question[]): boolean {
-<<<<<<< HEAD
-    if (questions.length === 0) return true; // If no questions, return true by default
-
-    const firstType = questions[0].type; // Get the type of the first question
-    return questions.every((question) => question.type === firstType);
-=======
     return false;
->>>>>>> upstream/task-state
 }
 
 /***
@@ -188,44 +110,13 @@ export function sameType(questions: Question[]): boolean {
  * except that a blank question has been added onto the end. Reuse the `makeBlankQuestion`
  * you defined in the `objects.ts` file.
  */
-<<<<<<< HEAD
-// export function addNewQuestion(
-//     questions: Question[],
-//     id: number,
-//     name: string,
-//     type: QuestionType,
-// ): Question[] {
-//     const newQuestion: Question[] = [];
-//     return newQuestion;
-// }
-=======
->>>>>>> upstream/task-state
 export function addNewQuestion(
     questions: Question[],
     id: number,
     name: string,
-<<<<<<< HEAD
     type: QuestionType,
 ): Question[] {
-    // Create a new question object based on the parameters
-    const newQuestion: Question = {
-        id,
-        name,
-        body: "", // Assuming body is empty for a new question
-        type,
-        options: type === "multiple_choice_question" ? [] : [], // Initialize options based on the type
-        expected: "", // Assuming expected is empty for a new question
-        points: 1, // Assuming default points is 1
-        published: false, // New questions are not published by default
-    };
-
-    // Return the existing questions along with the new question
-    return [...questions, newQuestion];
-=======
-    type: QuestionType
-): Question[] {
     return [];
->>>>>>> upstream/task-state
 }
 
 /***
@@ -236,22 +127,9 @@ export function addNewQuestion(
 export function renameQuestionById(
     questions: Question[],
     targetId: number,
-<<<<<<< HEAD
     newName: string,
 ): Question[] {
-    return questions.map((question) => {
-        // If the question's id matches the targetId, create a new question with the updated name
-        if (question.id === targetId) {
-            return { ...question, name: newName };
-        }
-        // Otherwise, return the question unchanged
-        return question;
-    });
-=======
-    newName: string
-): Question[] {
     return [];
->>>>>>> upstream/task-state
 }
 
 /***
@@ -264,31 +142,9 @@ export function renameQuestionById(
 export function changeQuestionTypeById(
     questions: Question[],
     targetId: number,
-<<<<<<< HEAD
     newQuestionType: QuestionType,
 ): Question[] {
-    return questions.map((question) => {
-        // Check if the current question's id matches the targetId
-        if (question.id === targetId) {
-            // Create a new question with the updated type
-            return {
-                ...question,
-                type: newQuestionType,
-                // Set options to an empty array if the new type is not multiple choice
-                options:
-                    newQuestionType !== "multiple_choice_question" ?
-                        []
-                    :   question.options,
-            };
-        }
-        // Return the question unchanged if the id does not match
-        return question;
-    });
-=======
-    newQuestionType: QuestionType
-): Question[] {
     return [];
->>>>>>> upstream/task-state
 }
 
 /**
@@ -301,43 +157,13 @@ export function changeQuestionTypeById(
  * Remember, if a function starts getting too complicated, think about how a helper function
  * can make it simpler! Break down complicated tasks into little pieces.
  */
-<<<<<<< HEAD
-
-=======
->>>>>>> upstream/task-state
 export function editOption(
     questions: Question[],
     targetId: number,
     targetOptionIndex: number,
-<<<<<<< HEAD
     newOption: string,
-): Question[] {
-    return questions.map((question) => {
-        // Check if this question is the one we want to edit
-        if (question.id === targetId) {
-            // Create a new options array based on the condition
-            const updatedOptions = [...question.options];
-            if (targetOptionIndex === -1) {
-                // If index is -1, add the new option to the end
-                updatedOptions.push(newOption);
-            } else {
-                // Replace the option at the specified index if it's valid
-                updatedOptions[targetOptionIndex] = newOption;
-            }
-            // Return a new question with the updated options
-            return {
-                ...question,
-                options: updatedOptions,
-            };
-        }
-        // Return the question unchanged if the id does not match
-        return question;
-    });
-=======
-    newOption: string
 ) {
     return [];
->>>>>>> upstream/task-state
 }
 
 /***
@@ -349,30 +175,7 @@ export function editOption(
 export function duplicateQuestionInArray(
     questions: Question[],
     targetId: number,
-<<<<<<< HEAD
     newId: number,
 ): Question[] {
-    const duplicated: Question[] = [];
-
-    for (const question of questions) {
-        duplicated.push(question); // Add the original question to the new array
-
-        // If this question is the one we want to duplicate
-        if (question.id === targetId) {
-            // Create a duplicate question
-            const newQuestion: Question = {
-                ...question,
-                id: newId, // Assign the new ID
-                name: `Copy of ${question.name}`, // Modify the name to indicate it's a copy
-            };
-            duplicated.push(newQuestion); // Add the duplicate immediately after the original
-        }
-    }
-
-    return duplicated; // Return the new array with duplicates
-=======
-    newId: number
-): Question[] {
     return [];
->>>>>>> upstream/task-state
 }
