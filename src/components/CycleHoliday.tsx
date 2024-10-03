@@ -1,14 +1,12 @@
 import React, { useState } from "react";
-import { Button } from "react-bootstrap";
+import { Button } from "react-bootstrap"; // This import is necessary since you're using Button
 
 /*
-🎄- Christmas
-🧧 - CNY
+🎄 - Christmas
+🧧 - Chinese New Year (CNY)
 🇺🇸 - Fourth of July
 🎃 - Halloween
-🍀 - Saint Patties
-
-🎄🧧 🇺🇸🎃🍀
+🍀 - Saint Patrick's Day
 */
 
 type Holiday = "🎄" | "🧧" | "🇺🇸" | "🎃" | "🍀";
@@ -34,20 +32,20 @@ export function CycleHoliday(): React.JSX.Element {
         <div>
             <h3>Holiday Cycle</h3>
             <p>Holiday: {currentHoliday}</p>
-            <button
-                onClick={() =>
-                    setCurrentHoliday(nextAlphabeticalHoliday(currentHoliday))
-                }
+            <Button
+                onClick={() => {
+                    setCurrentHoliday(nextAlphabeticalHoliday(currentHoliday));
+                }}
             >
                 Advance by Alphabet
-            </button>
-            <button
-                onClick={() =>
-                    setCurrentHoliday(nextYearlyHoliday(currentHoliday))
-                }
+            </Button>
+            <Button
+                onClick={() => {
+                    setCurrentHoliday(nextYearlyHoliday(currentHoliday));
+                }}
             >
                 Advance by Year
-            </button>
+            </Button>
         </div>
     );
 }
