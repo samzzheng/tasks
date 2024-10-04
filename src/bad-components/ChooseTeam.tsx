@@ -11,7 +11,7 @@ const PEOPLE = [
 ];
 
 export function ChooseTeam(): React.JSX.Element {
-    const [allOptions, setAllOptions] = useState<string[]>(PEOPLE);
+    // If you don't need to modify allOptions, you can remove it entirely.
     const [team, setTeam] = useState<string[]>([]);
 
     function chooseMember(newMember: string) {
@@ -31,11 +31,13 @@ export function ChooseTeam(): React.JSX.Element {
             <h3>Choose Team</h3>
             <Row>
                 <Col>
-                    {allOptions.map((option: string) => (
+                    {PEOPLE.map((option: string) => (
                         <div key={option} style={{ marginBottom: "4px" }}>
                             Add{" "}
                             <Button
-                                onClick={() => chooseMember(option)}
+                                onClick={() => {
+                                    chooseMember(option);
+                                }} // Added braces here
                                 size="sm"
                             >
                                 {option}

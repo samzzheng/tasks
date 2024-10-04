@@ -38,9 +38,9 @@ export function ColoredBox(): React.JSX.Element {
             <span>The current color is: {currentColor}</span>
             <div>
                 <ChangeColor
-                    onChange={() =>
-                        setColorIndex((colorIndex + 1) % COLORS.length)
-                    }
+                    onChange={() => {
+                        setColorIndex((colorIndex + 1) % COLORS.length);
+                    }} // Added braces here
                 />
                 <ColorPreview color={currentColor} />
             </div>
